@@ -1,30 +1,25 @@
 <script setup>
-import MyButton from "./components/MyButton.vue";
-import A from "./components/A.vue"
-import MyWrapper from "./components/MyWrapper.vue";
-const name = "孙悟空"
+import C from "./components/C.vue"
+
+/*
+    透传属性
+        - 在组件上设置属性，会自动传递给组件的根元素
+        - 这样一来可以方便我们在父组件中为子组件来设置属性
+        - 透传会发生在没有被声明为props和emit的属性上
+        - 自动的透传只适用单根组件
+*/
+function showMsg() {
+  alert("hello")
+}
+
 </script>
 
 <template>
-  <h1>App组件</h1>
-  <!--
-        希望在父组件中指定子组件中的内容
-            - 我们可以通过插槽（slot）来实现该需求
-        <MyButton>插槽的入口</MyButton>
-
-        <button>
-            <slot></slot>  插槽的出口
-        </button>
-
-        通过插槽引入组件，位于父组件的作用域中
-    -->
-<!--  <MyButton>这是App自定义的文字</MyButton>-->
-
-<!--  <MyButton>-->
-<!--    <A :name="name"></A>-->
-<!--  </MyButton>-->
-  <MyWrapper>
-    <template v-slot:aa>一级标题</template>
-    <template #bb>二级标题</template>
-  </MyWrapper>
+  <h1>属性的透传</h1>
+  <h2 class="box1">我是h2</h2>
+  <C class="box2" style="color: red" @click="showMsg()"></C>
 </template>
+
+<style scoped>
+
+</style>
