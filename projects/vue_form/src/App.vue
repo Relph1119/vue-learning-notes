@@ -1,0 +1,64 @@
+<script setup>
+import StudentList from "./components/StudentList.vue"
+import {ref} from "vue";
+import StudentForm from "./components/StudentForm.vue";
+// 发送请求来向服务器加载数据
+const STU_ARR = ref([
+  {
+    id: 1,
+    name: "孙悟空",
+    age: 18,
+    gender: "男",
+    address: "花果山"
+  },
+  {
+    id: 2,
+    name: "猪八戒",
+    age: 28,
+    gender: "男",
+    address: "高老庄"
+  },
+  {
+    id: 3,
+    name: "沙和尚",
+    age: 38,
+    gender: "男",
+    address: "流沙河"
+  },
+  {
+    id: 4,
+    name: "唐僧",
+    age: 16,
+    gender: "男",
+    address: "女儿国"
+  }
+])
+
+
+
+// 添加一个删除学生的方法
+const delStudentByIndex = (index)=> {
+  STU_ARR.value.splice(index, 1);
+}
+
+// 添加学生的方法
+const addNewStudent = (student) => {
+  const lastId = STU_ARR.value.at(-1)?.id
+  const newId = !isNaN(lastId) ? lastId + 1: 1;
+  student.id = newId;
+  STU_ARR.value.push(student)
+}
+</script>
+
+<template>
+  <StudentList
+      :students="STU_ARR"
+      @delStu="delStudentByIndex"
+  ></StudentList>
+  <hr>
+  <StudentForm @addStudent="addNewStudent"></StudentForm>
+</template>
+
+<style scoped>
+
+</style>
