@@ -1,8 +1,9 @@
 <template>
-  <h1>A组件</h1>
+  <h1>A组件 {{ props.name }}</h1>
 </template>
 
-<script>
+<script setup>
+const props = defineProps(["name"])
 </script>
 
 <style scoped>
