@@ -1,15 +1,16 @@
 <template>
   <h4>
     ComponentC --
-    {{name}} --
-    {{age}} --
-    {{title}} --
-    {{skills}}
-<!--    {{countStore.count}} &#45;&#45;-->
-<!--    <button @click="countStore.increment">按钮</button>-->
+    {{ name }} --
+    {{ age }} --
+    {{ title }} --
+    {{ skills }} --
+    {{ stuStore.double }}
+    <!--    {{countStore.count}} &#45;&#45;-->
+    <!--    <button @click="countStore.increment">按钮</button>-->
     <button @click="stuStore.growUp">长大</button>
 
-    <hr />
+    <hr/>
     <button @click="stuStore.name='孙大圣'">修改</button>
     <button @click="clickHandler">patch修改</button>
     <button @click="stuStore.$reset()">重置</button>
@@ -65,5 +66,38 @@ const clickHandler = () => {
     name: "孙小圣"
   }
 }
+
+/*
+    store的订阅
+        - 当store中的state发生变化时，做一些响应的操作
+        - store.$subscribe(函数, 配置对象)
+*/
+stuStore.$subscribe((mutation, state) => {
+  // mutation 表示修改的信息
+  // console.log(mutation)
+  console.log(mutation.payload)
+  console.log("state发生变化了", state)
+  // 使用订阅时不要在回调函数中直接修改state
+}, {detached: true})
+
+// $onAction 用来订阅action的调用
+stuStore.$onAction(({name, store, args, after, onError}) => {
+  /*
+        name 调用的action的名字
+        store store的实例
+        args action接收到的参数
+        after() 可以设置一个回调函数，函数会在action成功调用后触发
+        onError() 可以设置一个回调函数，函数会在action调用失败后触发
+    */
+  console.log("action执行了")
+
+  after(() => {
+    console.log(name + "成功执行！")
+  })
+
+  onError((err) => {
+    console.log(name + "执行失败！", err)
+  })
+})
 
 </script>
