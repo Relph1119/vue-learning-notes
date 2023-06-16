@@ -11,31 +11,13 @@
       <th>操作</th>
     </tr>
     </thead>
-    <tbody>
-    <tr v-for="(stu, index) in props.students">
-      <td>{{ stu.id }}</td>
-      <td>{{ stu.name }}</td>
-      <td>{{ stu.age }}</td>
-      <td>{{ stu.gender }}</td>
-      <td>{{ stu.address }}</td>
-      <td>
-<!--        <a href="#" @click.prevent="$emit('delStu', index)">删除</a>-->
-        <a href="#" @click.prevent="delStuHandler(index)">删除</a>
-      </td>
-    </tr>
-    </tbody>
+    <!-- 透传 -->
+    <StudentItem></StudentItem>
   </table>
 </template>
 
 <script setup>
-  const props = defineProps(["students"])
-  const emits = defineEmits(["delStu"])
-  // 定义一个删除学生的方法
-  const delStuHandler = (index)=> {
-    if(confirm("该操作不可恢复，请确认！")) {
-      emits("delStu", index);
-    }
-  }
+  import StudentItem from "./StudentItem.vue";
 </script>
 
 <style scoped>
@@ -50,7 +32,7 @@ caption {
   font-weight: bold;
 }
 
-th, td {
+th {
   border: 1px solid black;
   font-size: 24px;
 }

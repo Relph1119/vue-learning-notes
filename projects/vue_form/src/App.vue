@@ -1,7 +1,16 @@
 <script setup>
 import StudentList from "./components/StudentList.vue"
-import {ref} from "vue";
+import {ref, provide} from "vue";
 import StudentForm from "./components/StudentForm.vue";
+
+/*
+    依赖注入
+        - 通过依赖注入，可以跨域多层组件向其他的组件传递数据
+        - 步骤：
+            1. 设置依赖（provide） provide(name, value)
+            2. 注入数据 （inject） const value = inject(name, default)
+*/
+
 // 发送请求来向服务器加载数据
 const STU_ARR = ref([
   {
@@ -34,8 +43,6 @@ const STU_ARR = ref([
   }
 ])
 
-
-
 // 添加一个删除学生的方法
 const delStudentByIndex = (index)=> {
   STU_ARR.value.splice(index, 1);
@@ -48,15 +55,18 @@ const addNewStudent = (student) => {
   student.id = newId;
   STU_ARR.value.push(student)
 }
+
+provide("student", {
+  students: STU_ARR,
+  delStudentByIndex,
+  addNewStudent
+})
 </script>
 
 <template>
-  <StudentList
-      :students="STU_ARR"
-      @delStu="delStudentByIndex"
-  ></StudentList>
+  <StudentList></StudentList>
   <hr>
-  <StudentForm @addStudent="addNewStudent"></StudentForm>
+  <StudentForm ></StudentForm>
 </template>
 
 <style scoped>
