@@ -1,14 +1,29 @@
 <template>
 <h3>ComponentA -- {{countStore.count}} --
-  <button @click="countStore.increment">按钮</button></h3>
+  <button @click="countStore.increment">按钮</button>
+</h3>
+<hr>
+<h3>
+  ComponentA2 --
+  {{countStore2.count}} --
+  {{countStore2.double}} --
+  {{countStore2.name}}
+  <button @click="countStore2.increment">按钮</button>
+</h3>
+
 </template>
 
 <script setup>
 
 import {inject} from "vue";
 import {countStore} from "../store/count"
+import {useCountStore} from "../store/countStore";
 
 // const {count, increment} = inject("count")
+
+// 获取store实例
+const countStore2 = useCountStore();
+
 /*
     状态管理
         - 状态（state）
