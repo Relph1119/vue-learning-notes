@@ -3,3 +3,4 @@
     * [第2章 使用工具构建Vue](contents/ch02.md)
     * [第3章 Vue基础第1部分](contents/ch03.md)
     * [第4章 Vue基础第2部分](contents/ch04.md)
+    * [第5章 模板](contents/ch05.md)

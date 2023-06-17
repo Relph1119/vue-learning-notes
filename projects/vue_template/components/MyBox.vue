@@ -4,10 +4,6 @@
 </div>
 </template>
 
-<script setup>
-
-</script>
-
 <style module>
   .box1 {
     background-color: yellowgreen;

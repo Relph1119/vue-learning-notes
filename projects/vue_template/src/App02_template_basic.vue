@@ -24,9 +24,7 @@ const fn = () => {
     - 指令使用v-开头
       v-text 将表达式的值作为元素的textContent插入，作用同{{}}
         使用指令时，不需要通过{{}}来指定表达式
-      v-html 将表达式的值作为元素的innerHTML插入，有xss共计的风险
-
-
+      v-html 将表达式的值作为元素的innerHTML插入，有xss攻击的风险
 -->
   <h1>{{ "hello" + "world" }}</h1>
   <!-- <h2>{{ if(1+1==2){console.log(123)} }}</h2> -->
