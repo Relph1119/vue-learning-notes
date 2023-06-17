@@ -2,7 +2,8 @@
 
 &emsp;&emsp;本项目是按照李立超老师的[Vue3.0视频教程](https://www.bilibili.com/video/BV1re4y1M7ko)的学习笔记，老师的原始代码在[这里](https://github.com/lilichao/vue-course)，主要学习了Vue的基础知识，包括
 - 第1章 Vue简介（对应视频P1\~P5）
-- 
+- 第2章 使用工具构建Vue（对应视频P6\~P9）
+
 
 ## 在线阅读地址
 
