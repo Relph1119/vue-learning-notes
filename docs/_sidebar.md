@@ -4,3 +4,6 @@
     * [第3章 Vue基础第1部分](contents/ch03.md)
     * [第4章 Vue基础第2部分](contents/ch04.md)
     * [第5章 模板](contents/ch05.md)
+    * [第6章 练习：热门球员和热门球队](contents/ch06.md)
+    * [第7章 属性](contents/ch07.md)
+    * [第8章 网页的渲染](contents/ch08.md)
